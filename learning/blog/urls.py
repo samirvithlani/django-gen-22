@@ -7,4 +7,5 @@ urlpatterns = [
     path('index/',views.index),
     path('aboutus/',views.aboutUs),
     path('contactus/',views.contactUs),
+    path('getempdata/',views.getEmployeesData),
 ]

@@ -24,3 +24,54 @@ class Employee(models.Model):
      
     def __str__(self):
         return self.name 
+    
+class CourseModel(models.Model):
+    name = models.CharField(max_length=100)
+    duration = models.IntegerField()
+    status = models.BooleanField(default=True)
+    url = models.URLField()
+    fees = models.FloatField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = "course"  
+        
+    def __str__(self):
+        return self.name      
+
+class Student(CourseModel):
+    sname = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    pasword = models.CharField(max_length=100)
+    age = models.PositiveIntegerField()
+    
+    class Meta:
+        db_table = "student"
+        
+    def __str__(self):
+        return self.sname
+    
+        
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.BooleanField(default=True)
+    
+    class Meta:
+        db_table = "category"
+        
+    def __str__(self):
+        return self.name
+    
+class Product(models.Model):
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    price = models.FloatField()
+    qty = models.IntegerField()
+    status = models.BooleanField(default=True)
+    
+    class Meta:
+        db_table = "product"
+        
+    def __str__(self):
+        return self.name
