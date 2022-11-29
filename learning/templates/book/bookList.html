@@ -1,0 +1,14 @@
+<h1>BOOKS LIST</h1>
+{% for b  in books  %}
+   <ul>
+    <li>
+        {{b.name}}
+    </li>
+    <li>
+        {{b.price}}
+    </li>
+    <li>
+        {{b.status}}
+    </li>
+   </ul>
+{% endfor %}
