@@ -16,3 +16,27 @@ class Books(models.Model):
         
     def __str__(self):
         return self.name
+
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    
+    class Meta:
+        db_table = 'country'
+    
+    def __str__(self):
+        return self.name
+    
+
+
+class City(models.Model):
+    name = models.CharField(max_length=100)
+    country =models.ForeignKey(Country,on_delete=models.CASCADE)
+    population = models.PositiveIntegerField()
+    
+    class Meta:
+        db_table= 'city'
+                
+    def __str__(self):
+        return self.name            
+    
+    

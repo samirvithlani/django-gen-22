@@ -4,5 +4,7 @@ from . import views
 
 urlpatterns = [
 
- path('booklist/',views.getAllBooks)   
+ path('booklist/',views.getAllBooks),
+ path('country/',views.getCountryData),
+ 
 ]
