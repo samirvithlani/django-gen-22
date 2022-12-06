@@ -46,9 +46,10 @@ def getCountryData (request):
     #city = City.objects.all().aggregate(Max('population')).values_list('country__name','name')
     #city = City.objects.all().aggregate(Sum('population'))
     #city = City.objects.values('country__name').annotate(Sum('population'))
-    #city = City.objects.values('country__name').annotate(Sum('population')).order_by('-population')
+    city = City.objects.values('country__name').annotate(Sum('population')).order_by('-population__sum')
     #city = City.objects.values('country__name').annotate(Sum('population')).count()
-    city = City.objects.values('country__name').annotate(Sum('population')).filter(population__gt=10000000)
+    #city = City.objects.values('country__name').annotate(Sum('population')).filter(population__gt=10000000)
+    
     print(city)
     
     return render(request,'book/country.html')    
